@@ -1,0 +1,40 @@
+*{margin: 0; padding: 0;}
+ul{list-style: none;}
+
+.head{
+    height: 60px;
+    background-color: rgb(46,164,231);
+    color: white;
+}
+#menu{
+    float: left;
+    margin-top: -40px;
+    margin-left: 20px;
+}
+#add{
+    float: right;
+    margin-top: -40px;
+    margin-right: 20px;
+}
+
+.cr{color: red;}
+.cg{color: green;}
+.content_l{
+    padding: 15px 0 0 15px;
+}
+
+.content_r{
+    padding: 15px 0 0 15px;
+    color: rgb(43,43,43);
+}
+
+
+.content1 li{
+    font-size: 18px;
+    margin: 20px 0 0 10%;
+}
+.content1 ul li input{
+    width: 170px;height: 30px;
+    float: right;
+    margin-right:10% ;
+}

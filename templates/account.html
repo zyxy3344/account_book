@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="kalixyu's space,IT,yellow,个人博客,KalixYu,52ziyu">
+<meta name="author" content="KalixYu">
+<!--<link rel="icon" href="images/logo.png">-->
+<title>家庭记账本（Bate v0.0.1）</title>
+
+<link rel="stylesheet" href="{% static 'main.css'%}">
+
+</head>
+<body>
+<div class="head">
+    <h1 align="center" style="padding: 5px;">家庭记账本</h1>
+    <img src="{% static 'menu.jpg' %}" alt="" id="menu">
+    <a href="/add"><img src="{% static 'add.jpg' %}" alt="" id="add"></a>
+</div>
+
+<div class="content">
+
+    {% for billinfo in all_billinfo %}
+    <div>
+        {% if billinfo.type == 'expend' %}
+        <div class="content_l cr">
+        {% else %}
+        <div class="content_l cg">
+        {% endif %}
+            <h1>{{ billinfo.classify.name }}
+                <span style="float:right;margin-right: 20%;">￥{{ billinfo.money }}</span>
+            </h1>
+        </div>
+        <div class="content_r">
+            <h4>{{ billinfo.ps }}
+                <span style="float:right;margin-right: 20%;">{{ billinfo.date }}</span>
+            </h4>
+        </div>
+        <hr>
+    </div>
+    {% endfor %}
+
+
+
+</div>
+
+
+<script>
+
+</script>
+</body>
+</html>

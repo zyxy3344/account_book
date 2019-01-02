@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="kalixyu's space,IT,yellow,个人博客,KalixYu,52ziyu">
+    <meta name="author" content="KalixYu">
+    <link rel="icon" href="{% static 'logo.png' %}">
+    <title>家庭记账本（Bate v0.0.1）</title>
+
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+</head>
+<body>
+    <div class="head">
+        <h1 align="center" style="padding: 5px;">记一笔</h1>
+        <a href="/"><img src="{% static 'return.jpg' %}" alt="" id="menu"></a>
+        <!--<img src="./ok.jpg" alt="" id="add">-->
+    </div>
+
+    <div class="content1">
+        <form action="/add/" method="post">
+            <ul>
+                <li>
+                    <label>类型</label>
+                    <select name="type" style="width: 170px; height:30px; float: right; margin-right: 10%;">
+                          <option value ="expend">支出</option>
+                          <option value="income">收入</option>
+                    </select>
+                </li>
+                <li>
+                    <label>分类</label>
+                    <select name="classify" style="width: 170px; height:30px; float: right; margin-right: 10%;">
+                        {% for classify_name in all_classify_name %}
+                          <option value ={{ classify_name.id }}>{{ classify_name.name }}</option>
+{#                          <option value="1">餐费</option>#}
+                        {% endfor %}
+                    </select>
+                </li>
+                <li>
+                    <label for="date">日期</label><input type="date" id="date" name="date">
+                </li>
+                <li>
+                    <label for="money">金额</label><input type="text" id="money" placeholder="0.00" name="money">
+                </li>
+                <li>
+                    <label for="ps">备注</label><input type="text" id="ps" name="ps">
+                </li>
+
+                <li>
+                    <input type="submit" value="完成" style="width: 100px;height: 100px;">
+                </li>
+            </ul>
+
+            {% csrf_token %}
+        </form>
+
+
+    </div>
+
+
+    <script>
+
+    </script>
+</body>
+</html>
