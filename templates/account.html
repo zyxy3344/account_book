@@ -28,26 +28,50 @@
         {% else %}
         <div class="content_l cg">
         {% endif %}
-            <h1>{{ billinfo.classify.name }}
+        <h1>
+            {{ forloop.counter }}.
+            {{ billinfo.classify.name }}
                 <span style="float:right;margin-right: 20%;">￥{{ billinfo.money }}</span>
             </h1>
         </div>
+
+        <input type="hidden" name="bill_id" value="{{ billinfo.id }}">
+        <p style="float:right;" class="drop">删除</p>
+
         <div class="content_r">
             <h4>{{ billinfo.ps }}
                 <span style="float:right;margin-right: 20%;">{{ billinfo.date }}</span>
             </h4>
         </div>
-        <hr>
+    <br><hr>
     </div>
     {% endfor %}
 
 
-
+    </div>
 </div>
 
 
-<script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(".drop").click(function () {
+            var bill_id =  $(this).parent().find("input[name='bill_id']").val();
+            console.log(bill_id);
 
-</script>
+
+            $.ajax({
+                url: 'drop/',
+                type: 'POST',
+                data:{'bill_id': bill_id},
+                success: function (date) {
+                    console.log('ok');
+                    window.location.reload();
+                }
+            })
+
+        })
+    </script>
+
+
 </body>
 </html>

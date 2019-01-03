@@ -11,12 +11,13 @@ from django.shortcuts import HttpResponse,render,redirect
 
 from bill.models import BillInfo, Classify
 
+# account 页面
 def index(request):
     all_billinfo = BillInfo.objects.all()
 
     return render(request, 'account.html', {'all_billinfo': all_billinfo})
 
-
+# 添加页面
 def add(request):
     if request.method == 'GET':
         all_classify_name = Classify.objects.all()
@@ -39,8 +40,14 @@ def add(request):
         billinfo.save()
         return redirect('/')
 
-
+# 删除账单
 def drop(request):
-    pass
+    if request.method == 'POST':
+        bill_id = request.POST.get('bill_id')
+        print(bill_id)
+        BillInfo.objects.filter(id=bill_id).delete()
+        return render(request, 'add.html')
+        # return render(request, 'account.html')
+    # return  redirect('/')
 
 

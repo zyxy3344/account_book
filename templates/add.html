@@ -39,10 +39,10 @@
                     </select>
                 </li>
                 <li>
-                    <label for="date">日期</label><input type="date" id="date" name="date">
+                    <label for="date">日期</label><input type="date" id="date" value="2019-01-01" name="date">
                 </li>
                 <li>
-                    <label for="money">金额</label><input type="text" id="money" placeholder="0.00" name="money">
+                    <label for="money">金额(元)</label><input type="text" id="money"  placeholder="0.00" value="0" name="money">
                 </li>
                 <li>
                     <label for="ps">备注</label><input type="text" id="ps" name="ps">
@@ -56,12 +56,25 @@
             {% csrf_token %}
         </form>
 
-
     </div>
 
 
-    <script>
+{#    <script>#}
+{#        // 获取时间#}
+{#        function getTime() {#}
+{#            var date = document.getElementById("date");#}
+{#            var mydate = new Date();#}
+{#            var year = mydate.getFullYear();#}
+{#            var month = mydate.getMonth();#}
+{#            var day = mydate.getDate();#}
+{#            console.log(year + '-' + month+1 + '-' + day);#}
+{#            date.value = year + '-' + month+1 + '-' + day;#}
+{#        }#}
+{#        getTime()#}
+{##}
+{#    </script>#}
 
-    </script>
+
+
 </body>
 </html>
