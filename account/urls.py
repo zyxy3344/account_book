@@ -18,9 +18,10 @@ from django.urls import path
 
 from bill.views import index,add,drop
 
+
 urlpatterns = [
-    path('', index),
-    path('add/', add),
-    path('drop/', drop),
+    path('', index, name='index'),
+    path('add/', add, name='add'),
+    path('drop/', drop, name='drop'),
     path('admin/', admin.site.urls),
 ]

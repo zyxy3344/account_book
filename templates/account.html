@@ -16,8 +16,12 @@
 <div class="head">
     <h1 align="center" style="padding: 5px;">家庭记账本</h1>
     <img src="{% static 'menu.jpg' %}" alt="" id="menu">
-    <a href="/add"><img src="{% static 'add.jpg' %}" alt="" id="add"></a>
+    <a href="{% url 'add' %}"><img src="{% static 'add.jpg' %}" alt="" id="add"></a>
 </div>
+    <ul style="display:none;" id="menu1">
+        <li><a href="?classfy=income">收入</a></li>
+        <li><a href="?classfy=expend">支出</a></li>
+    </ul>
 
 <div class="content">
 
@@ -31,12 +35,12 @@
         <h1>
             {{ forloop.counter }}.
             {{ billinfo.classify.name }}
-                <span style="float:right;margin-right: 20%;">￥{{ billinfo.money }}</span>
+                <span style="float:right;margin-right: 20%;">￥<span class="money">{{ billinfo.money }}</span></span>
             </h1>
         </div>
 
         <input type="hidden" name="bill_id" value="{{ billinfo.id }}">
-        <p style="float:right;" class="drop">删除</p>
+        <button style="float:right;" class="drop">删除</button>
 
         <div class="content_r">
             <h4>{{ billinfo.ps }}
@@ -49,6 +53,8 @@
 
 
     </div>
+
+<div id="account" style="float: left">合计:$<span>11</span></div>
 </div>
 
 
@@ -71,6 +77,14 @@
 
         })
     </script>
+
+<script>
+    $('#menu').click(function () {
+        $('#menu1').css('display','');
+    });
+
+
+</script>
 
 
 </body>

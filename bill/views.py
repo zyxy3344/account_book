@@ -13,9 +13,13 @@ from bill.models import BillInfo, Classify
 
 # account 页面
 def index(request):
-    all_billinfo = BillInfo.objects.all()
+    demo = request.GET.get('classfy')
+    print(demo)
 
-    return render(request, 'account.html', {'all_billinfo': all_billinfo})
+    all_billinfo = BillInfo.objects.all().filter(type=demo)
+    if not all_billinfo:
+        all_billinfo = BillInfo.objects.all()
+    return render(request, 'account.html', {'all_billinfo': all_billinfo,})
 
 # 添加页面
 def add(request):
